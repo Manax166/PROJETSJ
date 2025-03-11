@@ -9,3 +9,5 @@ const deleteOrder = (req, res) =>{}
 const getAllOrdersFromBar = (req, res) =>{}
 
 const getOrder = (req, res) =>{}
+
+module.exports = {addOrder, updateOrder, deleteOrder, getAllOrdersFromBar, getOrder}

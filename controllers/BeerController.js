@@ -1,4 +1,4 @@
-const Biere = require("../models/Biere");
+const Biere = require("../models/index");
 
 const addBeer = (req, res) => {};
 const updateBeer = (req, res) => {};

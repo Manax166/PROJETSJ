@@ -1,4 +1,5 @@
-const {Commande, Biere } = require("../model/index")
+const Commande = require("../models/index")
+const Biere = require("../models/index")
 
 const addOrder = (req, res) =>{}
 

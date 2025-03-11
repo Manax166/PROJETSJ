@@ -1,7 +1,7 @@
 const sequelize = require("sequelize");
 const db = require("../config/database");
 
-const Biere = db.definer("biere", {
+const Biere = db.define("biere", {
   id: { type: sequelize.INTEGER, primaryKey: true, autoIncrements: true },
   name: { type: sequelize.STRING, allowNull: false },
   description: { type: sequelize.TEXT, allowNull: true },

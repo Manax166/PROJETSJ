@@ -1,4 +1,4 @@
-const Bar = require("../models/Bars");
+const Bar = require("../models/index");
 
 const addBar = (req, res) => {};
 const updateBar = (req, res) => {};

@@ -1,4 +1,11 @@
 {
+  "name": "projet_node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -7,5 +14,17 @@
     "nodemon": "^3.1.9",
     "sequelize": "^6.37.6",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "description": "",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manax166/PROJETSJ.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manax166/PROJETSJ/issues"
+  },
+  "homepage": "https://github.com/Manax166/PROJETSJ#readme"
 }

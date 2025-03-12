@@ -9,8 +9,9 @@ const {
   getBarsAvgDegree,
   getBarById,
 } = require("../controllers/barController");
+const barRequest = require("../middleware/BarRequest");
 
-router.post("/bars", addBar);
+router.post("/bars", barRequest, addBar);
 router.put("/bars/:id_bar", updateBar);
 router.delete("/bars/:id_bar", deleteBar);
 router.get("/bars/ville", getBarsByCity);

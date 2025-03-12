@@ -40,6 +40,7 @@ const updateBar = async (req, res) => {
 
 const deleteBar = async (req, res) => {
   const { id_bar } = req.params;
+  console.log(`Tentative de suppression du bar avec ID: ${id_bar}`);
   try {
     const bar = await Bar.findByPk(id_bar);
     if (!bar) {

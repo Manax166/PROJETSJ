@@ -1,13 +1,13 @@
-const db = require("../config/database")
-const sequelize =  require("sequelize")
+const db = require("../config/database");
+const sequelize = require("sequelize");
 
-const Bars = db.define('Bars', {
-    id: {type: sequelize.INTEGER, autoIncrements: true, primaryKey: true },
-    nom: {type: sequelize.STRING, unique: true},
-    adresse: {type: sequelize.STRING},
-    tel: {type: sequelize.STRING},
-    email: {type: sequelize.STRING},
-    description: {type: sequelize.STRING}
-})
+const Bars = db.define("Bars", {
+  id: { type: sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  nom: { type: sequelize.STRING, unique: true, allowNull: false },
+  adresse: { type: sequelize.STRING, allowNull: false },
+  tel: { type: sequelize.STRING, allowNull: false },
+  email: { type: sequelize.STRING, allowNull: false },
+  description: { type: sequelize.STRING, allowNull: false },
+});
 
-module.exports = Bars
+module.exports = Bars;

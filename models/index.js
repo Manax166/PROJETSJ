@@ -16,7 +16,11 @@ Commande.belongsTo(Bar, {
   foreignKey: "bar_id",
 });
 
-Biere.belongsToMany(Commande, { through: "Biere_Commande" });
-Commande.belongsToMany(Biere, { through: "Biere_Commande" });
+Biere.belongsToMany(Commande, {
+  through: "Biere_Commande",
+});
+Commande.belongsToMany(Biere, {
+  through: "Biere_Commande",
+});
 
 module.exports = { Bar, Biere, Commande };

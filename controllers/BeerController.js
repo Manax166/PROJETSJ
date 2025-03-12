@@ -24,6 +24,7 @@ const deleteBeer = async (req, res) => {
   try {
     const id = parseInt(req.params.id_biere);
     const biere = await Biere.findByPk(id);
+    await biere.setCommandes([]);
     await biere.destroy();
     res.json("Biere supprimée");
   } catch (err) {

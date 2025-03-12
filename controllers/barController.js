@@ -1,4 +1,4 @@
-const { Bar } = require("../models/index");
+const { Bar, Biere } = require("../models/index");
 
 const addBar = async (req, res) => {
   const data = { ...req.body };
@@ -70,6 +70,34 @@ const getBars = async (req, res) => {
   }
 };
 
+const getBarsByCity = async (req, res) => {
+  try {
+    const city = req.query.ville;
+
+    const result = await Bar.findAll({ where: { adresse: city } });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      msg: "Erreru lors de la récuperation des bars",
+      error: error.message,
+    });
+  }
+};
+
+const getBarsByName = async (req, res) => {
+  try {
+    const nom = req.query.name;
+
+    const result = await Bar.findAll({ where: { nom: nom } });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      msg: "Erreru lors de la récuperation des bars",
+      error: error.message,
+    });
+  }
+};
+
 const getBarById = async (req, res) => {
   const { id_bar } = req.params;
   try {
@@ -88,4 +116,38 @@ const getBarById = async (req, res) => {
   }
 };
 
-module.exports = { addBar, updateBar, deleteBar, getBars, getBarById };
+const getBarsAvgDegree = async (req, res) => {
+  const { id_bar } = req.params;
+
+  try {
+    const beers = await Biere.findAll({
+      where: { bar_id: id_bar },
+      attributes: ["degree"],
+    });
+
+    if (beers.length === 0) {
+      return res.status(404).json({ msg: "Aucune bière trouvée pour ce bar" });
+    }
+
+    const totalDegree = beers.reduce((sum, beer) => sum + beer.degree, 0);
+    const averageDegree = totalDegree / beers.length;
+
+    res.status(200).json({ averageAlcoholDegree: averageDegree.toFixed(2) });
+  } catch (error) {
+    res.status(500).json({
+      msg: "Erreru lors de la récuperation du bar",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = {
+  addBar,
+  updateBar,
+  deleteBar,
+  getBars,
+  getBarById,
+  getBarsByCity,
+  getBarsByName,
+  getBarsAvgDegree,
+};

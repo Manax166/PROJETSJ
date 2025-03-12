@@ -4,7 +4,7 @@ const {
   deleteBeerInCommand,
 } = require("../controllers/BiereCommandeController");
 
-router.post("/commandes/:id/biere/:id", addBeerIncommand);
-router.delete("/commandes/:id/biere/:id", deleteBeerInCommand);
+router.post("/commandes/:id_commande/biere/:id_biere", addBeerIncommand);
+router.delete("/commandes/:id_commande/biere/:id_biere", deleteBeerInCommand);
 
 module.exports = router;

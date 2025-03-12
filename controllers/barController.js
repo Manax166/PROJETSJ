@@ -65,7 +65,7 @@ const getBars = async (req, res) => {
     res.status(200).json(bars);
   } catch (error) {
     res.status(500).json({
-      msg: "Erreru lors de la récuperation des bars",
+      msg: "Erreur lors de la récuperation des bars",
       error: error.message,
     });
   }
@@ -79,7 +79,7 @@ const getBarsByCity = async (req, res) => {
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
-      msg: "Erreru lors de la récuperation des bars",
+      msg: "Erreur lors de la récuperation des bars",
       error: error.message,
     });
   }
@@ -93,7 +93,7 @@ const getBarsByName = async (req, res) => {
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
-      msg: "Erreru lors de la récuperation des bars",
+      msg: "Erreur lors de la récuperation des bars",
       error: error.message,
     });
   }
@@ -111,7 +111,7 @@ const getBarById = async (req, res) => {
     res.status(200).json(bar);
   } catch (error) {
     res.status(500).json({
-      msg: "Erreru lors de la récuperation du bar",
+      msg: "Erreur lors de la récuperation du bar",
       error: error.message,
     });
   }
@@ -136,7 +136,7 @@ const getBarsAvgDegree = async (req, res) => {
     res.status(200).json({ averageAlcoholDegree: averageDegree.toFixed(2) });
   } catch (error) {
     res.status(500).json({
-      msg: "Erreru lors de la récuperation du bar",
+      msg: "Erreur lors de la récuperation du bar",
       error: error.message,
     });
   }

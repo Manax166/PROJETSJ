@@ -2,11 +2,6 @@ const { Bar, Commande, Biere } = require("../models/index");
 
 const addOrder = async (req, res) => {
   const { id_bar } = req.params;
-  if (!id_bar) {
-    return res
-      .status(400)
-      .json({ msg: "L'ID du bar est manquant dans l'URL." });
-  }
 
   try {
     const bar = await Bar.findByPk(id_bar);
@@ -14,7 +9,6 @@ const addOrder = async (req, res) => {
     if (!bar) {
       return res.status(400).json({ msg: "Ce bar n'existe pas" });
     }
-
     const data = { ...req.body, bar_id: id_bar };
 
     const result = await Commande.create(data);

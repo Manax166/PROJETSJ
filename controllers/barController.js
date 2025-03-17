@@ -1,7 +1,9 @@
+const { Op } = require("sequelize");
 const { Bar, Biere } = require("../models/index");
 
 const addBar = async (req, res) => {
   const data = { ...req.body };
+
   try {
     const bar = await Bar.create(data);
     res.status(201).json({
@@ -40,7 +42,6 @@ const updateBar = async (req, res) => {
 
 const deleteBar = async (req, res) => {
   const { id_bar } = req.params;
-  console.log(`Tentative de suppression du bar avec ID: ${id_bar}`);
   try {
     const bar = await Bar.findByPk(id_bar);
     if (!bar) {
@@ -74,8 +75,13 @@ const getBars = async (req, res) => {
 const getBarsByCity = async (req, res) => {
   try {
     const city = req.query.ville;
-
-    const result = await Bar.findAll({ where: { adresse: city } });
+    const result = await Bar.findAll({
+      where: {
+        adresse: {
+          [Op.like]: `%${city.toLowerCase()}%`,
+        },
+      },
+    });
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
@@ -89,11 +95,18 @@ const getBarsByName = async (req, res) => {
   try {
     const nom = req.query.name;
 
-    const result = await Bar.findAll({ where: { nom: nom } });
+    const result = await Bar.findAll({
+      where: {
+        nom: {
+          [Op.like]: `%${nom.toLowerCase()}%`,
+        },
+      },
+    });
+
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
-      msg: "Erreur lors de la récuperation des bars",
+      msg: "Erreur lors de la récupération des bars",
       error: error.message,
     });
   }
